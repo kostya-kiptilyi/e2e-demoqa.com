@@ -1,4 +1,4 @@
-import { dateOfBirth } from "../support/testData";
+import { dateOfBirth, namePicture } from "../support/testData";
 
 class registrationPage {
 
@@ -13,10 +13,10 @@ getLastNameInput() {
 }
 
 getGenderRadioBtn(genderRadioNumber) {
-    return cy.xpath(`//input[@id='${genderRadioNumber}']`);
+    return cy.xpath(`//input[@id='gender-radio-${genderRadioNumber}']`);
 }
 
-getMobileNumber() {
+getMobileNumberInput() {
     return cy.xpath('//input[@id="userNumber"]');
 }
 
@@ -127,16 +127,68 @@ typeFirstName(firstName) {
     return this.getFirstNameInput().type(firstName);
 }
 
+checkThatFirstNameInputHasValue(firstName) {
+    return this.getFirstNameInput().should('have.value', firstName);
+}
+
 typeLastName(lastName) {
     return this.getLastNameInput().type(lastName);
+}
+
+checkThatLastNameInputHasValue(lastName) {
+    return this.getLastNameInput().should('have.value', lastName);
+}
+
+typeUserEmail(userEmail) {
+    return this.getUserEmailInput().type(userEmail)
+}
+
+checkThatUserEmailHasValue(userEmail) {
+    return this.getUserEmailInput().should('have.value', userEmail);
 }
 
 selectGender(genderRadioNumber) {
     return this.getGenderRadioBtn(genderRadioNumber).click({force:true});
 }
 
+checkThatGenderRadioBtnIsChecked(radioBtn) {
+    return this.getGenderRadioBtn(radioBtn).should('be.checked');
+}
+
 typeMobileNumber(mobileNumber) {
-    return this.getMobileNumber(mobileNumber).type(mobileNumber);
+    return this.getMobileNumberInput(mobileNumber).type(mobileNumber);
+}
+
+checkThatMobileNumberInputHasValue(mobileNumber) {
+    return this.getMobileNumberInput().should('have.value', mobileNumber);
+}
+
+checkThatDateOfBirthInputHasValue(dateOfBirth) {
+    return this.getDateOfBirthInput().should('have.value', dateOfBirth);
+}
+
+checkThatSubjectContainerContainsOf(subject) {
+    return this.getSubjectContainer().contains(subject);
+}
+
+checkThatHobbiesCheckboxIsChecked(checkbox) {
+    return this.getHobbiesCheckbox(checkbox).should('be.checked');
+}
+
+checkThatCurrentAddressInputHasValue(currentAddress) {
+    return this.getCurrentAddressInput().should('have.value', currentAddress);
+}
+
+checkThatStateContainerContainsOf(state) {
+    return this.getStateContainer().contains(state);
+}
+
+checkThaGenderRadioButtonIsChecked(radioButton) {
+    return this.getGenderRadioBtn(radioButton).should('be.checked');
+}
+
+checkThatCityContainerContainsOf(state) {
+    return this.getCityContainer().contains(state);
 }
 
 clickOnSubmitBtn() {
@@ -190,7 +242,7 @@ checkThatStateAndCityExistInTable(stateAndCity) {
     return this.getStateAndCityFromTable().contains(stateAndCity);
 }
 
-checkThatCloseBtnExistInTable() {
+checkThatCloseBtnExistsInTable() {
     return this.getCloseBtnFromTable().should('be.exist');
 }
 

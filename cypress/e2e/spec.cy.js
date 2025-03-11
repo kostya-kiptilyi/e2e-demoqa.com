@@ -37,60 +37,58 @@ describe('demoqa.com', () => {
     });
   });
   
-     it('TC_01 Verify that Student Registration Form opens successfully', () => {
-       cy.visit('/automation-practice-form');
-       cy.url('/automation-practice-form');
-     });
+  it('TC_01 Verify that Student Registration Form opens successfully', () => {
+    cy.visit('/automation-practice-form');
+    cy.url('/automation-practice-form');
+ });
 
   it ('TC_02 Verify that a user can successfully register by filling out the required fields', () => {
     registrationPage.typeFirstName(FNChristopher);
-    registrationPage.getFirstNameInput().should('have.value', FNChristopher);
+    registrationPage.checkThatFirstNameInputHasValue(FNChristopher);
     registrationPage.typeLastName(LNFeatherstonehaugh);
-    registrationPage.getLastNameInput().should('have.value', LNFeatherstonehaugh);
-    registrationPage.selectGender('gender-radio-1');
-    registrationPage.getGenderRadioBtn('gender-radio-1').should('be.checked');
+    registrationPage.checkThatLastNameInputHasValue(LNFeatherstonehaugh);
+    registrationPage.selectGender('1');
+    registrationPage.checkThaGenderRadioButtonIsChecked('1');
     registrationPage.typeMobileNumber(mN1234567890);
-    registrationPage.getMobileNumber(mN1234567890);
+    registrationPage.checkThatMobileNumberInputHasValue(mN1234567890);
     registrationPage.clickOnSubmitBtn();
     registrationPage.checkMessageAboutSuccessfulRegistration(textSuccessMessage);
     registrationPage.checkThatStudentNameExistsInTable(FNChristopher + ' ' + LNFeatherstonehaugh);
     registrationPage.checkThatGenderExistsInTable(genderMale);
     registrationPage.checkThatMobileNumberExistsInTable(mN1234567890);
     registrationPage.checkThatDateOfBirthIsNotEmptyInTable();
-    registrationPage.checkThatCloseBtnExistInTable();
+    registrationPage.checkThatCloseBtnExistsInTable();
   });
 
   it('TC_03 Verify that a user can successfully register by filling out the all fields', () => {
     registrationPage.typeFirstName(A);
-    registrationPage.getFirstNameInput().should('have.value', A);
+    registrationPage.checkThatFirstNameInputHasValue(A);
     registrationPage.typeLastName(B);
-    registrationPage.getLastNameInput().should('have.value', B);
+    registrationPage.checkThatLastNameInputHasValue(B);
     registrationPage.typeUserEmail(correctEmail);
-    registrationPage.getUserEmailInput().should('have.value', correctEmail);
-    registrationPage.selectGender('gender-radio-2');
-    registrationPage.getGenderRadioBtn('gender-radio-2').should('be.checked');
+    registrationPage.checkThatUserEmailHasValue(correctEmail);
+    registrationPage.selectGender(2);
+    registrationPage.checkThaGenderRadioButtonIsChecked('2');
     registrationPage.typeMobileNumber(mN1234567890);
-    registrationPage.getMobileNumber().should('have.value', mN1234567890); //
+    registrationPage.checkThatMobileNumberInputHasValue(mN1234567890);
     registrationPage.clickOnTheDateOfBirthInput();
     registrationPage.selectMonthFromDatepicker(january);
     registrationPage.selectYearFromDatepicker(year1950);
     registrationPage.selectFirstDayOfMonthFromDatepicker();
-    registrationPage.getDateOfBirthInput().should('have.value', dateOfBirth);
+    registrationPage.checkThatDateOfBirthInputHasValue(dateOfBirth);
     registrationPage.selectSubject(subjectText);
-    registrationPage.getSubjectContainer().contains(subjectFullText);
+    registrationPage.checkThatSubjectContainerContainsOf(subjectFullText);
     registrationPage.checkHobbiesCheckbox(1);
-    registrationPage.getHobbiesCheckbox(1).should('be.checked');
-    registrationPage.typeCurrentAddressInInput(currentAddress);
-    registrationPage.getCurrentAddressInput().should('have.value', currentAddress);
-    registrationPage.selectState(stateNCR);
-    registrationPage.getStateContainer().contains(stateNCR);
-    registrationPage.selectCity(cityDelhi);
-    registrationPage.getCityContainer().contains(cityDelhi);
+    registrationPage.checkThatHobbiesCheckboxIsChecked(1);
     registrationPage.uploadPicture(namePicture);
+    registrationPage.typeCurrentAddressInInput(currentAddress);
+    registrationPage.checkThatCurrentAddressInputHasValue(currentAddress);
+    registrationPage.selectState(stateNCR);
+    registrationPage.checkThatStateContainerContainsOf(stateNCR);
+    registrationPage.selectCity(cityDelhi);
+    registrationPage.checkThatCityContainerContainsOf(cityDelhi);
     registrationPage.clickOnSubmitBtn();
     registrationPage.checkMessageAboutSuccessfulRegistration(textSuccessMessage);
-    cy.screenshot();
-
     registrationPage.checkThatStudentNameExistsInTable(A + ' ' + B);
     registrationPage.checkThatStudentEmailExistsInTable(correctEmail);
     registrationPage.checkThatGenderExistsInTable(genderFemale);
@@ -101,7 +99,7 @@ describe('demoqa.com', () => {
     registrationPage.checkThatPictureNameExistsInTable(namePicture);
     registrationPage.checkThatAddressExistsInTable(currentAddress);
     registrationPage.checkThatStateAndCityExistInTable(stateNCR + ' ' + cityDelhi);
-    registrationPage.checkThatCloseBtnExistInTable();
+    registrationPage.checkThatCloseBtnExistsInTable();
   });
 
 });

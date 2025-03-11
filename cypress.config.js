@@ -9,6 +9,5 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://demoqa.com',
     testIsolation: false,
-    // defaultCommandTimeout: 90000 // need to delete
   },
 });
