@@ -29,13 +29,6 @@ describe('demoqa.com', () => {
   beforeEach(() => {
     cy.visit('/automation-practice-form');
   })
-
-  // before(() => {
-  //   Cypress.on('uncaught:exception', (err, runnable) => {
-  //     console.error('Uncaught Exception:', err); // Optional: Log the error for debugging
-  //     return false; // Prevent Cypress from failing the test
-  //   });
-  // });
   
   it('TC_01 Verify that Student Registration Form opens successfully', () => {
     cy.visit('/automation-practice-form');
