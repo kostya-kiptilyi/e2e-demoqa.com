@@ -35,7 +35,7 @@ describe('demoqa.com', () => {
     cy.url().should('be.eq', 'https://demoqa.com/automation-practice-form');
  });
 
-  it ('TC_02 Verify that a user can successfully register by filling out the required fields', () => {
+  it ('TC_02 Verify that a user can successfully register with required fields', () => {
     registrationPage.typeFirstName(firstName);
     registrationPage.checkThatFirstNameInputHasValue(firstName);
     registrationPage.typeLastName(lastName);
