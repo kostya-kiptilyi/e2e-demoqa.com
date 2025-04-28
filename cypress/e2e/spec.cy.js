@@ -53,7 +53,7 @@ describe('demoqa.com', () => {
     registrationPage.checkThatCloseBtnExistsInTable();
   });
 
-  it('TC_03 Verify that a user can successfully register by filling out the all fields', () => {
+  it('TC_03 Verify that a user can successfully register by filling all fields', () => {
     registrationPage.typeFirstName(a);
     registrationPage.checkThatFirstNameInputHasValue(a);
     registrationPage.typeLastName(b);
